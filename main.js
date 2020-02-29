@@ -10,6 +10,8 @@ var energy;
 var car;
 var balloon;
 var goalBalloon;
+var gun;
+var thruster;
 
 var groundHeight = 300;
 var backgroundImage;
@@ -25,6 +27,9 @@ function init() {
   canvas.width = 800;
   canvas.height = 550;
 
+  gun = Gun.PISTOL;
+  thruster = Thruster.NORMAL;
+
   ctx = canvas.getContext('2d');
   pressedKeys = [];
 }
@@ -38,7 +43,8 @@ function restart() {
 function loadWorld() {
   car = new Car(world);
   car.body.position = [250, 0];
-  car.gun = Gun.MACHINE_GUN;
+  car.gun = gun;
+  car.thruster = thruster;
 
   var ground = new Wall(world, 500, groundHeight);
   ground.body.position = [ground.body.width / 2, ground.body.height];
@@ -204,6 +210,7 @@ function clickGun(button) {
   button.classList.add('selected');
   var name = button.getAttribute('data-value');
   car.gun = Gun[name];
+  gun = car.gun;
 }
 
 function clickThruster(button) {
@@ -215,4 +222,5 @@ function clickThruster(button) {
   button.classList.add('selected');
   var name = button.getAttribute('data-value');
   car.thruster = Thruster[name];
+  thruster = car.thruster;
 }
