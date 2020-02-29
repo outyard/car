@@ -1,2 +1,9 @@
-Game where you customize a car and try to beat a map.
-You can shoot and use thrusters for the car.
+# Car
+
+![](Car.png)
+
+Game where you customize a flying car and try to beat a map filled with colorful balloons.
+
+You can choose which kind of gun and thruster to use.
+
+Built with JavaScript.
