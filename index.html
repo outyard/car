@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="container">
+    <canvas id="canvas"></canvas>
+    <div class="settings">
+      <h2>Gun</h2>
+      <div id="gun-buttons">
+        <button id="pistol-button" onclick="clickGun(this)" data-value="PISTOL">Pistol</button>
+        <button id="machine-gun-button" onclick="clickGun(this)" data-value="MACHINE_GUN">Machine Gun</button>
+        <button id="bazooka-button" onclick="clickGun(this)" data-value="BAZOOKA">Bazooka</button>
+      </div>
+      <h2>Thruster</h2>
+      <div id="thruster-buttons">
+        <button id="normal-button" onclick="clickThruster(this)" data-value="NORMAL">Normal</button>
+        <button id="fast-button" onclick="clickThruster(this)" data-value="FAST">Fast</button>
+        <button id="jump-button" onclick="clickThruster(this)" data-value="JUMP">Jump</button>
+      </div>
+      <h2>Controls</h2>
+      <p>Shoot: Z, Thruster: UP, Move on ground: LEFT / RIGHT</p>
+    </div>
+  </div>
+  <script src="keycode.js"></script>
+  <script src="math.js"></script>
+  <script src="physics.js"></script>
+  <script src="world.js"></script>
+  <script src="balloon.js"></script>
+  <script src="bullet.js"></script>
+  <script src="wall.js"></script>
+  <script src="car.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
