@@ -16,6 +16,9 @@ var thruster;
 var groundHeight = 300;
 var backgroundImage;
 
+var bestTimes = [];
+var startTime;
+
 init();
 run();
 
@@ -38,6 +41,7 @@ function restart() {
   world = new World();
   score = 0;
   loadWorld();
+  startTime = null;
 }
 
 function loadWorld() {
@@ -83,6 +87,16 @@ function loadWorld() {
   goalBalloon = new Balloon(world, 130, '#ff0');
   goalBalloon.body.position = [2280, -700];
   goalBalloon.onPop = function() {
+    if (startTime !== null) {
+      var totalTime = Date.now() - startTime;
+      if (bestTimes.length === 0 ||
+          totalTime < bestTimes[0]) {
+        console.log('New record: ' + totalTime);
+      }
+      bestTimes.push(totalTime);
+      bestTimes.sort();
+    }
+
     restart();
   };
 }
@@ -177,6 +191,15 @@ function drawUi() {
 
 window.addEventListener('keydown', (e) => {
   pressedKeys[e.keyCode] = true;
+
+  switch (e.keyCode) {
+    case keyCode['Up']:
+    case keyCode['Space']:
+    case keyCode['Left']:
+    case keyCode['Right']:
+      startTime = Date.now();
+      break;
+  }
 
   switch (e.keyCode) {
     case keyCode['Up']:
